@@ -1,112 +1,35 @@
 ﻿using Aula1.AulaObjetos;
+using Aula1.Carros;
 using Aula1.Exercicio1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Aula1
 {
     class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    ////colecoes
-        //    //foreach(var n in Colecoes.MinhaPilha())
-        //    //{
-        //    //    Console.Write(n);
-        //    //}
-
-        //    //tipo anonimo
-        //    //var pessoa = new { nome = "Filipe", sobrenome="Ceccon" };
-
-
-        //    //var p1 = new Pessoa { Nome = "Filipe", Email = "filipececcon@gmail.com" };
-        //    //var p2 = new Pessoa { Nome = "Rodolfo", Email = "rodolfo@gmail.com" };
-
-        //    //var p3 = new Pessoa("Filipe", "filipececcon@gmail.com");
-        //    //p3.Email = "azdrubal@gmail.com";
-
-        //    //var p4 = new PessoaFisica { Nome = "Filipe", Email = "filipececcon@gmail.com", CPF = "123.123.123-12" };
-
-        //    var end = new Endereco { 
-        //        Rua = "Rua teste", 
-        //        Bairro = "TESTADO", 
-        //        Cidade = "TESTOPOLIS", 
-        //        Estado = "TESTOLANDIA", 
-        //        Numero = "32T" 
-        //    };
-
-
-        //    var p4 = new PessoaFisica("Filipe", "filipececcon@gmail.com", end, "123.123.123-12");
-        //    var p5 = new PessoaJuridica("Filipe", "filipececcon@gmail.com", end, "12.123.123/0001-12", "Ceccon SA" );
-
-
-
-        //    //var p6 = new Pessoa("teste", "cpf");
-
-        //    Console.WriteLine(p4.Endereco.Rua);
-
-        //}
-
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            var c1 = new Corsa();
 
-            //var endereco = new Endereco
-            //{
-            //    Bairro ="Centro",
-            //    Cidade = "Centrista",
-            //    Estado = "Centrado",
-            //    Numero = "10A",
-            //    Rua = "Rua Central"
-            //};
+            var t1 = new TestaPerformance<Corsa>();
 
-            //var p1 = new PessoaFisica("Azdrubal", "az@gmail.com", endereco, "999.999.99-99");
-            //var p2 = new PessoaFisica("ASD", "asd@gmail.com", endereco, "888.888.888-88");
+            t1.AumentarCombustivel(c1);
 
 
-            //var social = new CartorioSocial();
-            //var daQuebrada = new CartorioDaQuebrada();
+            var mensagem = await t1.ZerarTanque(c1);
 
+            var nomes = new string[] { "joao", "maria", "jose" };
 
-            //Casamento(p1, p2, p1);
+            Console.WriteLine(mensagem);
 
-
-            var animais = new List<Animal>();
-
-
-            AdicionarCavalos(animais);
-
-
-            var ct1 = new CavaloTerrestre("pangaré", "preto");
-            var ct2 = new CavaloTerrestre("pangaré", "branco");
-
-            var cm1 = new CavaloMarinho("com guelrras", "vermelho");
-            var cm2 = new CavaloMarinho("sem guelrras", "amarelo");
-
-            animais.Add(ct1);
-            animais.Add(ct2);
-            animais.Add(cm1);
-            animais.Add(cm2);
-
-
-
-            //foreach(var a in animais)
-            //{
-            //    //galopadores
-            //    if(a.GetType() == typeof(IGalope))
-            //    {
-            //        GalopaAi(a as IGalope);
-            //    }
-            //}
-
-
-            animais.OfType<IGalope>().ToList().ForEach(GalopaAi);
-
+            nomes.AsParallel().ForAll(Console.WriteLine);
+            
             Console.ReadKey();
         }
-
-
-
 
         static void Casamento(PessoaFisica pessoa1, PessoaFisica pessoa2, ICasamento cartorio)
         {
@@ -115,11 +38,8 @@ namespace Aula1
 
         static void GalopaAi(IGalope galopador)
         {
-           Console.WriteLine(galopador.Galopar());
+            Console.WriteLine(galopador.Galopar());
         }
-
-
-        
 
 
         #region Aula passada
@@ -133,7 +53,7 @@ namespace Aula1
             AdicionarCavalos(animais);
             AdicionarBaleias(animais);
 
-            animais.ForEach(animal => Console.WriteLine(animal.Comer()));
+            animais.ForEach(animal => Console.WriteLine(animal.AlimentarRecemNascido()));
 
             var mamiferos = animais.Count(x => x.Mamifero);
 
@@ -177,7 +97,7 @@ namespace Aula1
 
             foreach (var animal in animais)
             {
-                Console.WriteLine(animal.Comer());
+                Console.WriteLine(animal.AlimentarRecemNascido());
 
                 mamiferos += animal.Mamifero ? 1 : 0;
 
@@ -304,7 +224,7 @@ namespace Aula1
 
                 animais.Add(new Baleia(kilos, metros, ambiente));
             }
-        } 
+        }
         #endregion
 
     }

@@ -33,7 +33,7 @@
                    c.Habitat.Ambiente == Habitat.Ambiente;
         }
 
-        public override string Comer()
+        public override string AlimentarRecemNascido()
         {
             return "Comer capim";
         }
