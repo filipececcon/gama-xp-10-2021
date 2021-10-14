@@ -17,8 +17,7 @@ namespace Aula1
 
             var t1 = new TestaPerformance<Corsa>();
 
-            t1.AumentarCombustivel(c1);
-
+            await t1.AumentarCombustivel(c1);
 
             var mensagem = await t1.ZerarTanque(c1);
 
@@ -26,6 +25,7 @@ namespace Aula1
 
             Console.WriteLine(mensagem);
 
+            //uma thread para cara elemento da coleção
             nomes.AsParallel().ForAll(Console.WriteLine);
             
             Console.ReadKey();
