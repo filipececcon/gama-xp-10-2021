@@ -51,34 +51,75 @@ namespace Aula1
         static void Main(string[] args)
         {
 
-            var endereco = new Endereco
-            {
-                Bairro ="Centro",
-                Cidade = "Centrista",
-                Estado = "Centrado",
-                Numero = "10A",
-                Rua = "Rua Central"
-            };
+            //var endereco = new Endereco
+            //{
+            //    Bairro ="Centro",
+            //    Cidade = "Centrista",
+            //    Estado = "Centrado",
+            //    Numero = "10A",
+            //    Rua = "Rua Central"
+            //};
 
-            var p1 = new PessoaFisica("Azdrubal", "az@gmail.com", endereco, "999.999.99-99");
-            var p2 = new PessoaFisica("ASD", "asd@gmail.com", endereco, "888.888.888-88");
-
-
-            var social = new CartorioSocial();
-            var daQuebrada = new CartorioDaQuebrada();
+            //var p1 = new PessoaFisica("Azdrubal", "az@gmail.com", endereco, "999.999.99-99");
+            //var p2 = new PessoaFisica("ASD", "asd@gmail.com", endereco, "888.888.888-88");
 
 
-            Casamento(p1, p2, p1);
+            //var social = new CartorioSocial();
+            //var daQuebrada = new CartorioDaQuebrada();
 
+
+            //Casamento(p1, p2, p1);
+
+
+            var animais = new List<Animal>();
+
+
+            AdicionarCavalos(animais);
+
+
+            var ct1 = new CavaloTerrestre("pangaré", "preto");
+            var ct2 = new CavaloTerrestre("pangaré", "branco");
+
+            var cm1 = new CavaloMarinho("com guelrras", "vermelho");
+            var cm2 = new CavaloMarinho("sem guelrras", "amarelo");
+
+            animais.Add(ct1);
+            animais.Add(ct2);
+            animais.Add(cm1);
+            animais.Add(cm2);
+
+
+
+            //foreach(var a in animais)
+            //{
+            //    //galopadores
+            //    if(a.GetType() == typeof(IGalope))
+            //    {
+            //        GalopaAi(a as IGalope);
+            //    }
+            //}
+
+
+            animais.OfType<IGalope>().ToList().ForEach(GalopaAi);
 
             Console.ReadKey();
         }
+
+
+
 
         static void Casamento(PessoaFisica pessoa1, PessoaFisica pessoa2, ICasamento cartorio)
         {
             cartorio.Casar(pessoa1, pessoa2);
         }
 
+        static void GalopaAi(IGalope galopador)
+        {
+           Console.WriteLine(galopador.Galopar());
+        }
+
+
+        
 
 
         #region Aula passada

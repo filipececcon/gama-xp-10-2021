@@ -10,13 +10,22 @@
             if (habitat == "agua" || habitat == "mar") Patas = 0;
         }
 
+        /// <summary>
+        /// Construtor de um Cavalo não mamífero
+        /// </summary>
+        /// <param name="raça">raça do cavalo</param>
+        /// <param name="cor">cor do cavalo</param>
+        /// <param name="patas">quantidade de patas que possui</param>
+        /// <param name="habitat">onde vive</param>
+        public Cavalo(string raça, string cor, int patas, string habitat) : base(false, patas, habitat)
+        {
+            Raça = raça;
+            Cor = cor;
+        }
+
         public string Raça { get; set; }
         public string Cor { get; set; }
 
-        public static string Galopar() 
-        {
-            return "Pocotó ";
-        }
 
         public bool Equals(Cavalo c)
         {
