@@ -13,21 +13,48 @@ namespace Aula1
     {
         static async Task Main(string[] args)
         {
-            var c1 = new Corsa();
+            var c1 = new Corsa { Combustivel = 110, Nome = "Corsa1" };
+            var c2 = new Corsa { Combustivel = 150, Nome = "Corsa2" };
+            var c3 = new Corsa { Combustivel = 80, Nome = "Corsa3" };
 
-            var t1 = new TestaPerformance<Corsa>();
+            var oficina = new Oficina<Corsa>();
 
-            await t1.AumentarCombustivel(c1);
+            //execução de task em paralelo
+            //usar a palavra await quando quisermos aguardar a execução
+            //não usar quando é indiferente aguardar a execução
 
-            var mensagem = await t1.ZerarTanque(c1);
+            var servico1 = new Task[]
+            {
+                oficina.TrocarOleo(c1),
+                oficina.TrocarFreios(c1),
+                oficina.Abastecer(c1),
+            };
 
-            var nomes = new string[] { "joao", "maria", "jose" };
+            var servico2 = new Task[]
+            {
+                oficina.TrocarOleo(c2),
+                oficina.TrocarFreios(c2),
+                oficina.Abastecer(c2),
+            };
 
-            Console.WriteLine(mensagem);
+            var agenda = new Task[] { }
+            .Concat(servico1)
+            .Concat(servico2);
 
-            //uma thread para cara elemento da coleção
-            nomes.AsParallel().ForAll(Console.WriteLine);
-            
+            await Task.WhenAll(agenda);
+
+            //execuçoes em paralelo
+            //Parallel.Invoke(
+            //    () => { Console.WriteLine("1"); },
+            //    () => { Console.WriteLine("2"); },
+            //    () => { Console.WriteLine("3"); }
+            //);
+
+            //Parallel For - para cada elemente uma execução separada
+            //var nomes = new string[] { "joao", "maria", "jose" };
+            //nomes.AsParallel().ForAll(Console.WriteLine);
+
+            Console.WriteLine("-- FIM --");
             Console.ReadKey();
         }
 

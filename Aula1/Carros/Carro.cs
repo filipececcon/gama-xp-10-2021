@@ -9,6 +9,7 @@ namespace Aula1.Carros
     public class Carro
     {
         public int Combustivel { get; set; }
+        public string Nome { get; set; }
 
         public Carro(int combustivel)
         {
