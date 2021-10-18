@@ -5,8 +5,7 @@ namespace Gama.Locadora.Comercial.Entities
 {
     public class Car : Entity
     {
-        public string Brand { get; set; }
-        public string Model { get; set; }
+        public CarModel Model { get; set; }
         public int YearModel { get; set; }
         public int YearManufactured { get; set; }
         public string Color { get; set; }
