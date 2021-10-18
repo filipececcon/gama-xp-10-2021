@@ -1,4 +1,5 @@
 ﻿
+using Gama.Locadora.Comercial.ValueObjects;
 using Gama.Locadora.Shared.Entities;
 
 namespace Gama.Locadora.Comercial.Entities
@@ -9,7 +10,7 @@ namespace Gama.Locadora.Comercial.Entities
         public int YearModel { get; set; }
         public int YearManufactured { get; set; }
         public string Color { get; set; }
-        public string LicensePlate { get; set; }
+        public LicensePlate LicensePlate { get; set; }
         public bool IsRented { get; set; }
         public decimal DiaryPrice { get; set; }
     }
