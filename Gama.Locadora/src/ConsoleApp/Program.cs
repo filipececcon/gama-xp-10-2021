@@ -7,11 +7,14 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var repository = new CarBrandRepository();
+            var funcionario = new Ajudante();
 
-            var consulta = new GetCarBrandById(repository);
+            var metre = new Metre(funcionario);
 
-            var result = consulta.Query();
+            var prato = metre.FazerPedido();
+
+            Console.WriteLine(prato.ToString());
+
         }
     }
 }
