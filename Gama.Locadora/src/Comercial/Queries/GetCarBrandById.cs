@@ -1,14 +1,13 @@
 ﻿using Gama.Locadora.Comercial.Entities;
+using Gama.Locadora.Shared.Entities;
+using Gama.Locadora.Shared.Handlers;
 using Gama.Locadora.Shared.Interfaces;
+using Gama.Locadora.Shared.Requests;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gama.Locadora.Comercial.Queries
 {
-    public class GetCarBrandById
+    public class GetCarBrandById : QueryHandler<CarBrand, GetByIdRequest>
     {
         private readonly IRepository<CarBrand> _repository;
 
@@ -17,11 +16,20 @@ namespace Gama.Locadora.Comercial.Queries
             _repository = repository;
         }
 
-        public CarBrand Query(Guid id)
+        public override CarBrand Query(GetByIdRequest request)
         {
-            return _repository.GetById(id);
+            return _repository.GetById(request.Id);
         }
 
 
+        
+    }
+
+    public class Qualquer : IRepository<CarBrand>
+    {
+        public CarBrand GetById(Guid id)
+        {
+            return new CarBrand { Name = "VW" };
+        }
     }
 }
