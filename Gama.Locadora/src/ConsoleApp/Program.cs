@@ -8,14 +8,17 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var repository = new Qualquer();
-
-            var query = new GetCarBrandById(repository);
-
+            //objeto padrao DTO para fazer a requisicao
             var request = new GetByIdRequest() { Id = Guid.NewGuid() };
 
-            var result = query.Query(request);
+            //objeto que faz acesso aos dados
+            var repository = new CarBrandRepository();
 
+            //objeto manipulador de consultas
+            var query = new GetCarBrandById(repository);
+
+            //execucao da consulta com o retorno no resultado
+            var result = query.Query(request);
         }
     }
 }
