@@ -19,7 +19,7 @@ namespace Gama.Locadora.Shared.Interfaces
     //vai dizer o que a classe deve fazer
     public interface IRepository<TEntity> where TEntity : Entity
     {
-        public TEntity GetById();
+        public TEntity GetById(Guid id);
     }
 
     
