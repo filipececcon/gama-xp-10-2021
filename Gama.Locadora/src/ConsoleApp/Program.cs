@@ -8,17 +8,13 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            //objeto padrao DTO para fazer a requisicao
-            var request = new GetByIdRequest() { Id = Guid.NewGuid() };
+            var m1 = new Torneiro();
 
-            //objeto que faz acesso aos dados
-            var repository = new CarBrandRepository();
+            var of = new Oficina<Parafuso>(m1);
 
-            //objeto manipulador de consulta
-            var query = new GetCarBrandById(repository);
+            var material = of.ConsertaMotor();
 
-            //execucao da consulta com o retorno no resultado
-            var result = query.Query(request);
+            Console.WriteLine($"Tipo: {material.GetType().Name} - Marca: {material.Marca} ");
         }
     }
 }
