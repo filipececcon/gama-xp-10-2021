@@ -14,7 +14,7 @@ namespace ConsoleApp
             //objeto que faz acesso aos dados
             var repository = new CarBrandRepository();
 
-            //objeto manipulador de consultas
+            //objeto manipulador de consulta
             var query = new GetCarBrandById(repository);
 
             //execucao da consulta com o retorno no resultado
