@@ -1,6 +1,7 @@
 ﻿using Gama.Locadora.Comercial.Queries;
 using Gama.Locadora.Shared.Requests;
 using System;
+using System.Linq;
 
 namespace ConsoleApp
 {
@@ -8,13 +9,32 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var m1 = new Torneiro();
+            //    var funcionario = new Funcionario<Hamburguer>();
 
-            var of = new Oficina<Parafuso>(m1);
+            //    var ff = new FastFood<Hamburguer>(funcionario);
 
-            var material = of.ConsertaMotor();
+            //    var comida = ff.ServirComida();
 
-            Console.WriteLine($"Tipo: {material.GetType().Name} - Marca: {material.Marca} ");
+            //    Console.WriteLine($"Tipo: { comida.GetType().Name }, Ingredientes: { String.Join(",", comida.Ingredientes) }");
+
+
+            var numeros = new int[] { 1, 6, 9, 20 };
+
+            var nomes = new string[] { " jose", "joao", "maria"};
+
+            Imprime<string>(nomes);
+        }
+
+
+        static void Imprime<T>(T[] array)
+        {
+
+            foreach(var item  in array)
+            {
+                Console.WriteLine(item);
+            }
+
+
         }
     }
 }
