@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Gama.Locadora.Shared.Handlers
 {
-    //manipulador de consulta abstrato
-    public abstract class QueryHandler<TResult, TRequest> 
-        where TResult : class
+    public abstract class QueryHandler<TResponse, TRequest>
+        where TResponse : class
         where TRequest : Request
     {
         /// <summary>
@@ -17,7 +16,7 @@ namespace Gama.Locadora.Shared.Handlers
         /// </summary>
         /// <param name="request">tipo de requisicao</param>
         /// <returns>o tipo do resultado passado</returns>
-        public abstract TResult Query(TRequest request);
+        public abstract TResponse Handle(TRequest request);
         
     }
 }

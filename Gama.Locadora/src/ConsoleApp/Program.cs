@@ -1,4 +1,5 @@
 ﻿using Gama.Locadora.Comercial.Queries;
+using Gama.Locadora.Comercial.Requests;
 using Gama.Locadora.Shared.Requests;
 using System;
 using System.Linq;
@@ -9,32 +10,16 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            //    var funcionario = new Funcionario<Hamburguer>();
+            //pegar a entidade CarBrand onde o nome eh igual ao que eu passar
 
-            //    var ff = new FastFood<Hamburguer>(funcionario);
+            var handler = new GetCarBrandByNameHandler();
 
-            //    var comida = ff.ServirComida();
+            var request = new GetCarBrandByNameRequest() { Name = "Ford" };
 
-            //    Console.WriteLine($"Tipo: { comida.GetType().Name }, Ingredientes: { String.Join(",", comida.Ingredientes) }");
-
-
-            var numeros = new int[] { 1, 6, 9, 20 };
-
-            var nomes = new string[] { " jose", "joao", "maria"};
-
-            Imprime<string>(nomes);
+            var response = handler.Handle(request);
         }
 
 
-        static void Imprime<T>(T[] array)
-        {
-
-            foreach(var item  in array)
-            {
-                Console.WriteLine(item);
-            }
-
-
-        }
+       
     }
 }
