@@ -1,27 +1,23 @@
 ﻿using Gama.Locadora.Comercial.Entities;
 using Gama.Locadora.Comercial.Requests;
 using Gama.Locadora.Shared.Handlers;
+using Gama.Locadora.Shared.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Gama.Locadora.Comercial.Queries
 {
-    public class GetCarBrandByNameHandler : QueryHandler<IEnumerable<CarBrand>, GetCarBrandByNameRequest>
+    public class GetCarBrandByNameHandler : QueryHandler<CarBrand, CarBrand, GetCarBrandByNameRequest>
     {
-        private List<CarBrand> _brands =  new List<CarBrand> {
-        
-            new CarBrand { Name = "Ford" },
-            new CarBrand { Name = "Ford" },
-            new CarBrand { Name = "VW" },
-            new CarBrand { Name = "VW" },
-            new CarBrand { Name = "Fiat" },
-            new CarBrand { Name = "Porche" },
-        
-        };
-
-        public override IEnumerable<CarBrand> Handle(GetCarBrandByNameRequest request)
+        public GetCarBrandByNameHandler(IQueryRepository<CarBrand> repository) : base(repository)
         {
-            return _brands.Where(x => x.Name == request.Name);
+            
         }
+
+        public override CarBrand Handle(GetCarBrandByNameRequest request)
+        {
+            return Repository.GetByName(request.Name);
+        }
+
     }
 }
