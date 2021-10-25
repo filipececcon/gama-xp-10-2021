@@ -1,58 +1,50 @@
 ﻿using Gama.Locadora.Comercial.Entities;
+using Gama.Locadora.Infra.Data.Contexts;
 using Gama.Locadora.Shared.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gama.Locadora.Infra.Data.Repositories
 {
     public class CarBrandRepository : IQueryRepository<CarBrand>, ICommandRepository<CarBrand>
     {
-        private static List<CarBrand> _brands = new List<CarBrand> {
+        private RentCarStoreContext _context;
 
-            new CarBrand { Name = "Ford" },
-            new CarBrand { Name = "Ford" },
-            new CarBrand { Name = "VW" },
-            new CarBrand { Name = "VW" },
-            new CarBrand { Name = "Fiat" },
-            new CarBrand { Name = "Porche" },
-
-        };
+        public CarBrandRepository()
+        {
+            _context = new RentCarStoreContext();
+        }
 
         public CarBrand GetByName(string name)
         {
-            return _brands.First(x => x.Name == name);
+            return _context.CarBrands.First(x => x.Name == name);
         }
 
         public void Add(CarBrand carBrand)
         {
-            _brands.Add(carBrand);                     
+           _context.CarBrands.Add(carBrand);
         }
 
         public void Update(CarBrand entity, Guid id)
         {
-            var carBrand = _brands.Single(x => x.Id == id);
+            var carBrand = _context.CarBrands.Single(x => x.Id == id);
 
             carBrand.Name = entity.Name;
 
-            carBrand.UpdatedAt = DateTime.Now;         
+            carBrand.UpdatedAt = DateTime.Now;
         }
-        
+
         public void Remove(CarBrand entity)
         {
-            _brands.Remove(entity);
+            _context.CarBrands.Remove(entity);
         }
 
         public void Remove(Guid id)
         {
-            _brands.RemoveAll(x => x.Id == id);
-        }
+            var result = _context.CarBrands.Find(id);
 
-        public Guid PegaUm()
-        {
-            return _brands.First().Id;
-        }
+            _context.CarBrands.Remove(result);
+        }      
     }
 }

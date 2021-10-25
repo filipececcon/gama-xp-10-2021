@@ -11,5 +11,6 @@ namespace Gama.Locadora.Comercial.Entities
     {
         public string Name { get; set; }
         public CarBrand Brand { get; set; }
+        public Guid CarBrandId { get; set; }
     }
 }
