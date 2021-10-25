@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Gama.Locadora.Shared.Handlers
 {
-    public abstract class CommandHandler<TEntity, TResponse, TRequest>
+    public abstract class CommandHandler<TEntity, TRequest, TResponse>
         where TRequest : Request
         where TEntity : Entity
     {

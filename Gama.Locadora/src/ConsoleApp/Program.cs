@@ -15,21 +15,19 @@ namespace ConsoleApp
         {
             var repository = new CarBrandRepository();
 
-            var command = new AddCarBrandCommandHandler(repository);
+            //var command = new AddCarBrandCommandHandler(repository);
 
-            var request = new AddCarBrandRequest() {  BrandName = "AlfaRomeo" };
+            //var request = new AddCarBrandRequest("Fiat");
+
+            var command = new UpdateCarBrandCommandHandler(repository);
+
+            var idmanual = repository.PegaUm();
+
+            var request = new UpdateCarBrandRequest() { BrandName = "Ferrari", Id = idmanual };
 
             command.Handle(request);
 
-
-
-
-
-            var request2 = new GetCarBrandByNameRequest() { Name = "AlfaRomeo" };
-
-            var handler = new GetCarBrandByNameHandler(repository);
-
-            var response = handler.Handle(request2);
+            var response = command.Handle(request);
             
         }
     }

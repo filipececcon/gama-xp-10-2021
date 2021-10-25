@@ -3,14 +3,10 @@ using Gama.Locadora.Comercial.Requests;
 using Gama.Locadora.Shared.Handlers;
 using Gama.Locadora.Shared.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gama.Locadora.Comercial.Commands
 {
-    public class AddCarBrandCommandHandler : CommandHandler<CarBrand, Object, AddCarBrandRequest>
+    public class AddCarBrandCommandHandler : CommandHandler<CarBrand, AddCarBrandRequest, Object>
     {
         public AddCarBrandCommandHandler(ICommandRepository<CarBrand> repository) : base(repository)
         {
@@ -18,11 +14,11 @@ namespace Gama.Locadora.Comercial.Commands
 
         public override object Handle(AddCarBrandRequest request)
         {
-            var newBrand = new CarBrand() { Name = request.BrandName };
+            var newCarBrand = new CarBrand() { Name = request.BrandName };
 
-            Repository.Add(newBrand);
+            Repository.Add(newCarBrand);
 
-            return null;
+            return newCarBrand;
         }
     }
 }

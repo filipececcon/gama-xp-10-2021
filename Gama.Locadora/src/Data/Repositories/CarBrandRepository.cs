@@ -28,7 +28,31 @@ namespace Gama.Locadora.Infra.Data.Repositories
 
         public void Add(CarBrand carBrand)
         {
-            _brands.Add(carBrand);
+            _brands.Add(carBrand);                     
+        }
+
+        public void Update(CarBrand entity, Guid id)
+        {
+            var carBrand = _brands.Single(x => x.Id == id);
+
+            carBrand.Name = entity.Name;
+
+            carBrand.UpdatedAt = DateTime.Now;         
+        }
+        
+        public void Remove(CarBrand entity)
+        {
+            _brands.Remove(entity);
+        }
+
+        public void Remove(Guid id)
+        {
+            _brands.RemoveAll(x => x.Id == id);
+        }
+
+        public Guid PegaUm()
+        {
+            return _brands.First().Id;
         }
     }
 }
