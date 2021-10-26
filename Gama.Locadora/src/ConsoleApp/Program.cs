@@ -1,4 +1,5 @@
 ﻿using Gama.Locadora.Comercial.Commands;
+using Gama.Locadora.Comercial.Entities;
 using Gama.Locadora.Comercial.Queries;
 using Gama.Locadora.Comercial.Requests;
 using Gama.Locadora.Comercial.ValueObjects;
@@ -16,8 +17,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             var db = new RentCarStoreContext();
-
-
+                        
             
         }
     }
