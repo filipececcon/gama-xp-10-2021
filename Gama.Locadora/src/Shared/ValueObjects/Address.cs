@@ -4,6 +4,17 @@ namespace Gama.Locadora.Comercial.ValueObjects
 {
     public class Address : ValueObject
     {
+        public Address()
+        {
+
+        }
+
+        public Address(string fulladdress)
+        {
+            SetFrom(fulladdress);
+        }
+
+
         public string Country { get; set; }
         public string State { get; set; }
         public string City { get; set; }
@@ -15,12 +26,12 @@ namespace Gama.Locadora.Comercial.ValueObjects
 
         public string FullAddress => GetBy();
 
-        private string GetBy()
+        public string GetBy()
         {
             return $"{Country},{State},{City},{Neighbourhood},{Street},{Number},{Complement},{ZipCode}";
         }
 
-        private void SetFrom(string fullAddress)
+        public void SetFrom(string fullAddress)
         {
             var address = fullAddress.Split(",");
 

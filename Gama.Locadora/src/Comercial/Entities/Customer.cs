@@ -1,4 +1,5 @@
-﻿using Gama.Locadora.Comercial.ValueObjects;
+﻿using System.Collections.Generic;
+using Gama.Locadora.Comercial.ValueObjects;
 using Gama.Locadora.Shared.Entities;
 using Gama.Locadora.Shared.ValueObjects;
 
@@ -6,6 +7,12 @@ namespace Gama.Locadora.Comercial.Entities
 {
     public class Customer : Entity
     {
+        private Customer()
+        {
+
+        }
+
+
         public Customer(Name name, CPF cpf, CNH cnh, Address address, Email email, Phone phone = null)
         {
             Name = name;
@@ -22,5 +29,7 @@ namespace Gama.Locadora.Comercial.Entities
         public Address Address { get; set; }
         public Email Email { get; set; }
         public Phone Phone { get; set; }
+
+        public List<Rent> Rents { get; set; }
     }
 }

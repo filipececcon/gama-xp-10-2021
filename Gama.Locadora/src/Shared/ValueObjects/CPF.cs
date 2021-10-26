@@ -10,7 +10,7 @@ namespace Gama.Locadora.Shared.ValueObjects
     {
         public CPF(string cpf)
         {
-
+            Value = cpf;
         }
 
         public string Value { get; private set; }

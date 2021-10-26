@@ -26,6 +26,6 @@ namespace Gama.Locadora.Infra.Data.Configs
             builder
                 .Property(x => x.IsActive)
                 .HasColumnName("ST_ACTIVE");
-        }
+        }       
     }
 }

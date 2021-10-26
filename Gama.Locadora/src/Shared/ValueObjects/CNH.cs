@@ -10,7 +10,7 @@ namespace Gama.Locadora.Shared.ValueObjects
     {
         public CNH(string cnh)
         {
-
+            Value = cnh;
         }
 
         public string Value { get; private set; }

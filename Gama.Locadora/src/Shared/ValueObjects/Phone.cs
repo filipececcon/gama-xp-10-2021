@@ -8,6 +8,17 @@ namespace Gama.Locadora.Shared.ValueObjects
 {
     public class Phone
     {
+        public Phone()
+        {
+
+        }
+
+        public Phone(string fullphone)
+        {
+            SetFrom(fullphone);
+        }
+
+
         public string ContryCode { get; set; }
         public string AreaCode { get; set; }
         public string Number { get; set; }

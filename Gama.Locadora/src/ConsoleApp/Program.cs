@@ -1,6 +1,8 @@
 ﻿using Gama.Locadora.Comercial.Commands;
 using Gama.Locadora.Comercial.Queries;
 using Gama.Locadora.Comercial.Requests;
+using Gama.Locadora.Comercial.ValueObjects;
+using Gama.Locadora.Infra.Data.Contexts;
 using Gama.Locadora.Infra.Data.Repositories;
 using Gama.Locadora.Shared.Requests;
 using System;
@@ -13,21 +15,9 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var repository = new CarBrandRepository();
+            var db = new RentCarStoreContext();
 
-            //var command = new AddCarBrandCommandHandler(repository);
 
-            //var request = new AddCarBrandRequest("Fiat");
-
-            var command = new UpdateCarBrandCommandHandler(repository);
-
-            var idmanual = repository.PegaUm();
-
-            var request = new UpdateCarBrandRequest() { BrandName = "Ferrari", Id = idmanual };
-
-            command.Handle(request);
-
-            var response = command.Handle(request);
             
         }
     }

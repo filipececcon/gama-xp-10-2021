@@ -9,9 +9,16 @@ namespace Gama.Locadora.Comercial.Entities
 {
     public class CarModel : Entity
     {
+        private CarModel()
+        {
+
+        }
+
         public string Name { get; set; }
         public CarBrand Brand { get; set; }
         public Guid CarBrandId { get; set; }
+
+        public List<Car> Cars { get; set; }
     }
 }
 

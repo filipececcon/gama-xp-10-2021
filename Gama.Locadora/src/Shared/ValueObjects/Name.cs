@@ -8,6 +8,17 @@ namespace Gama.Locadora.Shared.ValueObjects
 {
     public class Name : ValueObject
     {
+        public Name()
+        {
+
+        }
+
+        public Name(string fullname)
+        {
+            SetFrom(fullname);
+        }
+
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -18,7 +29,7 @@ namespace Gama.Locadora.Shared.ValueObjects
             return $"{FirstName},{LastName}";
         }
 
-        private void SetFrom(string fullname)
+        public void SetFrom(string fullname)
         {
             var address = fullname.Split(",");
             FirstName = address[0];

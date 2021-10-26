@@ -14,7 +14,7 @@ namespace Gama.Locadora.Comercial.Commands
 
         public override object Handle(AddCarBrandRequest request)
         {
-            var newCarBrand = new CarBrand() { Name = request.BrandName };
+            var newCarBrand = new CarBrand(request.BrandName);
 
             Repository.Add(newCarBrand);
 
