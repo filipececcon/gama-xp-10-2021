@@ -30,7 +30,7 @@ namespace Gama.Locadora.Infra.Data.Repositories
         {
             var carBrand = _context.CarBrands.Single(x => x.Id == id);
 
-            carBrand.Name = entity.Name;
+            //carBrand.Name = entity.Name;
 
             carBrand.UpdatedAt = DateTime.Now;
         }
