@@ -68,3 +68,5 @@ namespace Gama.Locadora.Infra.Data.Configs
 
     }
 }
+
+//FluentAPI
