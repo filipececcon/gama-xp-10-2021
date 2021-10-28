@@ -13,11 +13,11 @@ namespace Gama.Locadora.Shared.Handlers
         where TRequest : Request
         where TEntity : Entity
     {
-        protected readonly ICommandRepository<TEntity> Repository;
+        protected readonly ICommandRepository<TEntity> _repository;
 
         protected CommandHandler(ICommandRepository<TEntity> repository)
         {
-            Repository = repository;
+            _repository = repository;
         }
 
         public abstract TResponse Handle(TRequest request);

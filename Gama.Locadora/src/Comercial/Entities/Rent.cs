@@ -42,6 +42,6 @@ namespace Gama.Locadora.Comercial.Entities
         public int DiffDays()
         {
             return (EndDate.Subtract(StartDate)).Days;
-        }
+        }        
     }
 }

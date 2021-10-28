@@ -35,7 +35,9 @@ namespace API
             services.AddDbContext<RentCarStoreContext>(options => options.UseSqlServer(connection));
 
             services.AddSingleton(typeof(IQueryRepository<>), typeof(QueryRepository<>));
-                       
+
+            services.AddSingleton(typeof(ICommandRepository<>), typeof(CommandRepository<>));
+
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -29,9 +29,13 @@ namespace Gama.Locadora.Infra.Data.Repositories
             _context.Set<TEntity>().Remove(entity);            
         }
 
-        public void Update(TEntity entity)
+        public TEntity Update(TEntity entity)
         {
-            _context.Set<TEntity>().Update(entity);          
+            entity.UpdatedAt = DateTime.Now;
+
+            _context.Set<TEntity>().Update(entity);
+
+            return entity;
         }
 
         public void Save()

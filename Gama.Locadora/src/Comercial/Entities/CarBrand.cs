@@ -19,7 +19,7 @@ namespace Gama.Locadora.Comercial.Entities
             Name = name;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         public List<CarModel> Models { get; set; }
     }

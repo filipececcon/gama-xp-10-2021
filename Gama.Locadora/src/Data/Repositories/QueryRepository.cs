@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Gama.Locadora.Infra.Data.Contexts;
 using Gama.Locadora.Shared.Entities;
 using Gama.Locadora.Shared.Interfaces;
@@ -17,9 +18,11 @@ namespace Gama.Locadora.Infra.Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<TEntity> Get()
+        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> predicate = null)
         {
-            return _context.Set<TEntity>().ToList();
+            return predicate == null
+                ? _context.Set<TEntity>().AsNoTracking().ToList()
+                : _context.Set<TEntity>().AsNoTracking().Where(predicate);                       
         }
 
         public TEntity GetById(Guid id)

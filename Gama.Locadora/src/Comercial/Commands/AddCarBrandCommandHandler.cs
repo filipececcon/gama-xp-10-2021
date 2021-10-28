@@ -16,7 +16,9 @@ namespace Gama.Locadora.Comercial.Commands
         {
             var newCarBrand = new CarBrand(request.BrandName);
 
-            Repository.Add(newCarBrand);
+            _repository.Add(newCarBrand);
+
+            _repository.Save();
 
             return newCarBrand;
         }

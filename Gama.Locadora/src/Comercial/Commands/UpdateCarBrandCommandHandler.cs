@@ -14,11 +14,15 @@ namespace Gama.Locadora.Comercial.Commands
 
         public override object Handle(UpdateCarBrandRequest request)
         {
-            //var brand = new CarBrand(request.BrandName);
+            var brand = _repository.GetById(request.Id);
+                        
+            brand.Name = request.BrandName;
+             
+            var result = _repository.Update(brand);
 
-            //Repository.Update(brand, request.Id);
+            _repository.Save();
 
-            return null;
+            return result;
         }
     }
 }

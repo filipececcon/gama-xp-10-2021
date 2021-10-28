@@ -4,6 +4,7 @@ using Gama.Locadora.Comercial.Entities;
 using Gama.Locadora.Comercial.Requests;
 using Gama.Locadora.Shared.Handlers;
 using Gama.Locadora.Shared.Interfaces;
+using Gama.Locadora.Shared.Util;
 
 namespace Gama.Locadora.Comercial.Queries
 {
@@ -15,7 +16,13 @@ namespace Gama.Locadora.Comercial.Queries
 
         public override IEnumerable<CarBrand> Handle(GetAllCarBrandRequest request)
         {
-            return base._repository.Get();
+            var predicate = PredicateBuilder.New<CarBrand>();
+
+            if (request.Active != null) predicate = predicate.And(x => x.IsActive == request.Active);
+
+            if (request.Name != null) predicate = predicate.And(x => x.Name == request.Name);
+
+            return base._repository.Get(predicate);
         }
     }
 }
