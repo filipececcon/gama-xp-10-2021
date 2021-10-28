@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Gama.Locadora.Shared.Handlers
 {
-    public abstract class QueryHandler<TEntity, TResponse, TRequest>
+    public abstract class QueryHandler<TEntity, TRequest, TResponse>
         //where TResponse : class
         where TEntity : Entity
         where TRequest : Request
     {
-        protected readonly IQueryRepository<TEntity> Repository;
+        protected readonly IQueryRepository<TEntity> _repository;
 
         public QueryHandler(IQueryRepository<TEntity> repository)
         {
-            Repository = repository;
+            _repository = repository;
         }
 
 

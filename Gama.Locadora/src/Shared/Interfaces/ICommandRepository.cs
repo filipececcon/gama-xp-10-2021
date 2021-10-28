@@ -7,10 +7,12 @@ namespace Gama.Locadora.Shared.Interfaces
     {
         void Add(TEntity entity);
 
-        void Update(TEntity entity, Guid id);
+        void Update(TEntity entity);
 
         void Remove(TEntity entity);
 
-        void Remove(Guid id);
+        TEntity GetById(Guid id);
+
+        void Save();
     }
 }

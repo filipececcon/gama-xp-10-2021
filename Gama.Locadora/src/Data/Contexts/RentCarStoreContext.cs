@@ -7,20 +7,20 @@ namespace Gama.Locadora.Infra.Data.Contexts
 {
     public class RentCarStoreContext : DbContext
     {
-        public RentCarStoreContext()
+        public RentCarStoreContext(DbContextOptions options) : base(options)
         {
             Database.EnsureCreated();
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //https://www.connectionstrings.com/sql-server/
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    //https://www.connectionstrings.com/sql-server/
 
-            //optionsBuilder.UseSqlServer("server=(localdb);database=RentCarStoreDb;");
+        //    //optionsBuilder.UseSqlServer("server=(localdb);database=RentCarStoreDb;");
 
-            optionsBuilder.UseSqlServer("Server=localhost;Database=RentCarStoreDb;User Id=sa;Password=yourStrong(!)Password;");
+        //    optionsBuilder.UseSqlServer("Server=localhost;Database=RentCarStoreDb;User Id=sa;Password=yourStrong(!)Password;");
                        
-        }
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

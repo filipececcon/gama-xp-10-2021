@@ -15,15 +15,15 @@ namespace Gama.Locadora.Comercial.Commands
 
         public override object Handle(UpdateCustomerRequest request)
         {
-            var name = new Name() { FirstName = request.FirstName };
+            //var name = new Name() { FirstName = request.FirstName };
 
-            var cnh = new CNH(request.CNH);
+            //var cnh = new CNH(request.CNH);
 
-            var email = new Email() { Value = request.Email };
+            //var email = new Email() { Value = request.Email };
 
-            var dadosDoClienteParaAtualizar = new Customer(name, null, cnh, null, email);
+            //var dadosDoClienteParaAtualizar = new Customer(name, null, cnh, null, email);
 
-            Repository.Update(dadosDoClienteParaAtualizar, request.Id);
+            //Repository.Update(dadosDoClienteParaAtualizar, request.Id);
 
             return null;
         }

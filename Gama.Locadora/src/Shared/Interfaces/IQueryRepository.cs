@@ -9,6 +9,7 @@ namespace Gama.Locadora.Shared.Interfaces
 {
     public interface IQueryRepository<TEntity> where TEntity : Entity
     {
-        public TEntity GetByName(string name);
+        TEntity GetById(Guid id);
+        IEnumerable<TEntity> Get();
     }
 }
