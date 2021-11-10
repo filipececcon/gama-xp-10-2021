@@ -16,7 +16,9 @@ namespace Gama.Locadora.Comercial.Commands
         {
             var entity = _repository.GetById(request.Id);
 
-            _repository.Remove(entity);
+            entity.IsActive = false;
+
+            _repository.Update(entity);
 
             _repository.Save();
 
